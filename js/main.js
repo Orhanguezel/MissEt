@@ -21,6 +21,7 @@ const body = document.querySelector("body"),
     dotThree = document.querySelector(".dots .three"),
     dots = document.querySelectorAll(".dots > div"),
     logoImage = document.querySelector("header nav .logo img"),
+    svgDown = document.querySelector("header .arrow-down"),
     svgUp = document.querySelector(".copyright .arrow-up"),
     menuImgs = document.querySelectorAll(".menu .menu-image-container img"),
     boxModel = document.querySelector(".menu .box-model"),
@@ -31,7 +32,7 @@ const body = document.querySelector("body"),
 
 // remove loader
 function fadeOutEffect() {
-    const fadeEffect = setInterval(function () {
+    const fadeEffect = setInterval(function() {
         if (!loader.style.opacity) {
             loader.style.opacity = 1;
         }
@@ -48,7 +49,7 @@ window.addEventListener("load", fadeOutEffect);
 
 // prevent links click hash
 links.forEach(link =>
-    link.addEventListener("click", function (e) {
+    link.addEventListener("click", function(e) {
         e.preventDefault();
     })
 );
@@ -77,7 +78,7 @@ svgUp.addEventListener("click", () => {
     });
 });
 
-window.onscroll = function () {
+window.onscroll = function() {
     // make navbar fixed & change logo color
     if (window.pageYOffset > headerSection.offsetHeight - 75) {
         nav.classList.add("active");
@@ -88,9 +89,11 @@ window.onscroll = function () {
     }
 
     // header welcome fade out and in
-   
+    if (window.pageYOffset > 0) {
+        headerText.style.opacity = -window.pageYOffset / 300 + 1;
+    }
     // home page JS
-    if (pageTitle.text === "Miss Et&Balik") {
+    if (pageTitle.text === "ROSA- Restaurant") {
         //change dots background color
         if (window.pageYOffset < headerSection.offsetHeight * 0.5) {
             dots.forEach(dot => dot.classList.remove("black"));
@@ -135,7 +138,7 @@ window.onscroll = function () {
 };
 
 // home page JS
-if (pageTitle.text === "Miss Et&Balik") {
+if (pageTitle.text === "ROSA- Restaurant") {
     // svg-down smooth scroll
     svgDown.addEventListener("click", () => {
         window.scroll({
@@ -146,7 +149,7 @@ if (pageTitle.text === "Miss Et&Balik") {
 
     // dots smooth scroll
     dots.forEach(dot =>
-        dot.addEventListener("click", function () {
+        dot.addEventListener("click", function() {
             window.scrollTo({
                 top: document.querySelector(this.dataset.x).offsetTop - 100,
                 behavior: "smooth"
@@ -156,7 +159,7 @@ if (pageTitle.text === "Miss Et&Balik") {
 
     // show box model
     menuImgs.forEach(img =>
-        img.addEventListener("click", function () {
+        img.addEventListener("click", function() {
             const arr = Array.from(this.parentElement.parentElement.children);
 
             arr.forEach(div => div.classList.remove("active"));
@@ -170,7 +173,61 @@ if (pageTitle.text === "Miss Et&Balik") {
     );
 
     // box model functions
-   
+    function boxModelFun(e) {
+        // close box model
+        if (
+            e.code === "Escape" ||
+            (e.target.tagName === "DIV" && !e.target.classList.contains("arrow")) ||
+            e.target.classList.contains("close")
+        ) {
+            boxModel.classList.remove("active");
+            body.classList.remove("hide-scroll");
+        }
+
+        if (boxModel.classList.contains("active")) {
+            if (
+                e.code === "ArrowRight" ||
+                e.code === "ArrowLeft" ||
+                e.target.classList.contains("arrow-right") ||
+                e.target.classList.contains("arrow-left")
+            ) {
+                const arr = Array.from(menuImageContainer.children);
+                const active = arr.find(div => div.classList.contains("active"));
+
+                // change box model image
+                if (
+                    e.target.classList.contains("arrow-right") ||
+                    e.code === "ArrowRight"
+                ) {
+                    if (active.nextElementSibling === null) {
+                        active.parentElement.firstElementChild.classList.add("active");
+                        boxModelImage.src =
+                            active.parentElement.firstElementChild.firstElementChild.src;
+                    } else {
+                        active.nextElementSibling.classList.add("active");
+                        boxModelImage.src = active.nextElementSibling.firstElementChild.src;
+                    }
+                }
+
+                // change box model image
+                else if (
+                    e.target.classList.contains("arrow-left") ||
+                    e.code === "ArrowLeft"
+                ) {
+                    if (active.previousElementSibling === null) {
+                        active.parentElement.lastElementChild.classList.add("active");
+                        boxModelImage.src =
+                            active.parentElement.lastElementChild.lastElementChild.src;
+                    } else {
+                        active.previousElementSibling.classList.add("active");
+                        boxModelImage.src =
+                            active.previousElementSibling.firstElementChild.src;
+                    }
+                }
+                active.classList.remove("active");
+            }
+        }
+    }
 
     window.addEventListener("keydown", boxModelFun);
     window.addEventListener("click", boxModelFun);
