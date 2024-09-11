@@ -1,0 +1,33 @@
+/* responsive.css */
+
+/* Tablet ve Mobil Uyumluluk */
+@media (max-width: 768px) {
+    header nav {
+      display: block;
+      text-align: center;
+      left: 0;
+      top: 0;
+      width: 100%;
+      padding-top: 25px;
+    }
+  
+    header .navigation-bar {
+      position: fixed;
+      top: 0;
+      left: -174px;
+      height: 100%;
+      background-color: #262526;
+      padding: 40px;
+    }
+  
+    .about-us,
+    .reservation {
+      display: block;
+      padding-top: 50px;
+    }
+  
+    footer .contact-container {
+      display: block;
+    }
+  }
+  

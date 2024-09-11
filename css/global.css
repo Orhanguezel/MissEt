@@ -1,0 +1,82 @@
+/* global.css */
+
+/*Start Global*/
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 12px;
+  }
+  
+  body.hide-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  h2 {
+    font-family: 'Herr Von Muellerhoff', cursive;
+    font-size: 100px;
+    font-weight: normal;
+    margin: 0 0 -55px;
+  }
+  
+  h1,
+  h3 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 47px;
+    font-weight: bold;
+    letter-spacing: 9.4px;
+    margin: 0 0 15px;
+  }
+  
+  p {
+    color: #515151;
+    line-height: 27px;
+  }
+  
+  .a-CTA {
+    border-bottom: 1px solid #a96700;
+    padding-bottom: 10px;
+    letter-spacing: 1.5px;
+    font-size: 25px;
+  }
+  
+  /*End Global*/
+  
+  /*Mutual*/
+  p,
+  .a-CTA,
+  input,
+  header .navigation-bar a,
+  .copyright li,
+  .contact .form form label,
+  .contact .form form button {
+    font-family: Cabin, sans-serif;
+  }
+  
+  .fa-asterisk,
+  .a-CTA,
+  h2,
+  header .navigation-bar a:hover,
+  header nav.active .navigation-bar a:hover,
+  footer .social-media .links a:hover,
+  .copyright .info li a,
+  .copyright .CTA li a:hover {
+    color: #a96700;
+  }
+  
