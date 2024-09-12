@@ -1,10 +1,9 @@
-/*Start Dots*/
 :root {
-  --dot-size: 12px; /* Noktaların boyutu */
-  --dot-margin-bottom: 10px; /* Noktaların alt boşluğu */
-  --dot-border-width: 2px; /* Noktaların sınır kalınlığı */
-  --dot-border-color: #fff; /* Noktaların sınır rengi */
-  --dot-active-color: #000; /* Aktif nokta arka plan rengi */
+  --dot-size: 12px;
+  --dot-margin-bottom: 10px;
+  --dot-border-width: 2px;
+  --dot-border-color: #fff;
+  --dot-active-color: #000;
 }
 
 .dots {
@@ -15,23 +14,20 @@
   z-index: 5;
 }
 
-.dots > .dot {
+.dots > div {
   width: var(--dot-size);
   height: var(--dot-size);
   border-radius: 50%;
   z-index: 20;
   margin-bottom: var(--dot-margin-bottom);
   border: var(--dot-border-width) solid var(--dot-border-color);
-  background-color: transparent; /* Varsayılan arka plan rengi */
-  transition: background-color 0.3s, border-color 0.3s;
+  cursor: pointer; /* Dotlar tıklanabilir */
 }
 
 .dots .active {
-  background-color: var(--dot-active-color); /* Aktif olan noktanın arka planı */
+  background-color: var(--dot-active-color);
 }
 
 .dots .black {
   border-color: var(--dot-active-color);
 }
-
-/*End Dots*/
