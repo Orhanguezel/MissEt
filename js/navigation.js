@@ -54,3 +54,24 @@ window.addEventListener("scroll", function() {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    // SVG ve arrow-down div'ine tıklanma olayını ekle
+    const svgDown = document.querySelector('.svg-down');
+    const arrowDown = document.querySelector('.arrow-down');
+
+    if (svgDown && arrowDown) {
+        svgDown.addEventListener('click', function() {
+            document.getElementById('about').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        arrowDown.addEventListener('click', function() {
+            document.getElementById('about').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    }
+});
+
+
